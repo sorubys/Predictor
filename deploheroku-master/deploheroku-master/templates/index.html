@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Cricket Result Predictor</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+ <div>
+	<h1>Predict Results of ODI match</h1>
+     <h3> Enter the following values to predict the result of ODI match</h3>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+
+    <!-- myform -->
+    <label for="Team">Select the Team:</label>
+    <select name="Team" id="Team">
+      <option value="0">Afghanistan</option> 
+      <option value="1">Bangladesh</option> 
+      <option value="2">Hong Kong</option>
+      <option value="3">India</option>
+      <option value="4">Pakistan</option>
+      <option value="5">Sri Lanka</option>
+      <option value="6">UAE</option>   
+    </select>
+
+
+    <label for="Opponent">Select the Opponent Team:</label>
+    <select name="Opponent" id="Opponent">
+      <option value="0">Afghanistan</option> 
+      <option value="1">Bangladesh</option> 
+      <option value="2">Hong Kong</option>
+      <option value="3">India</option>
+      <option value="4">Pakistan</option>
+      <option value="5">Sri Lanka</option>
+      <option value="6">UAE</option>   
+    </select>
+
+
+    <label for="Ground">Select the Ground:</label>
+    <select name="Ground" id="Ground">
+      <option value="0">Abu Dhabi</option>
+        <option value="1">Chandigarh</option>
+        <option value="2">Chattogram</option>
+        <option value="3">Colombo(PSS)</option>
+        <option value="4">Colombo(RPS)</option>
+        <option value="5">Colombo(SSC)</option>
+        <option value="6">Cuttack</option>       
+        <option value="7">Dambulla</option>
+        <option value="8">Dhaka</option>
+        <option value="9">Dubai(DSC)</option>
+        <option value="10">Fatullah</option>
+        <option value="11">Kandy</option>
+        <option value="12">Karachi</option>
+        <option value="13">Kolkata</option>   
+        <option value="14">Lahore</option>
+        <option value="15">Mirpur</option>
+        <option value="16">Moratuwa</option>   
+        <option value="17">Sharjah</option>     
+    </select>
+
+    <label for="Toss">Select the Toss results:</label>
+    <select name="Toss" id="Toss">
+      <option value="0">Loss</option>
+      <option value="1">Win</option>   
+    </select>
+    
+    <label for="Selection">Select your decision:</label>
+    <select name="Selection" id="Selection">
+      <option value="0">Batting</option>
+      <option value="1">Bowling</option>    
+    </select>
+    <br>
+    <input type="number" name="Run_Scored" placeholder="Enter the Run Scored:" required="required" >
+    <input type="number" name="Wicket_Lost" placeholder="Enter the Wicket Lost:" required="required" >
+    <input type="number" name="Fours" placeholder="Enter the Fours:" required="required" >
+    <input type="number" name="Sixes" placeholder="Enter the Sixes:" required="required" >
+    <input type="number" name="Extras" placeholder="Enter the Extras:" required="required" >
+    <input type="number" step="0.01" name="Run_Rate" placeholder="Enter the Run Rate:" required="required" >
+    <input type="number" step="0.01" name="Avg_Bat_Strike_Rate" placeholder="Enter the Avg_Bat_Strike_Rate:" required="required" >
+    <input type="number" name="Maximum_Partnership" placeholder="Enter the Maximum_Partnership:" required="required" >
+    <input type="number" name="Wicket_Taken" placeholder="Enter the Wicket_Taken:" required="required" >
+    <input type="number" name="Highest_Individual_wicket" placeholder="Enter the Highest_Individual_wicket:" required="required" >
+
+    <!-- myform -->
+     <br>
+          <button type="submit" class="btn">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
